@@ -20,7 +20,7 @@ class StudentApiService {
         return $this->client->get('/students/' . $id)->json();
     }
 
-    public function crearEstudainte(array $data){
+    public function crearEstudiante(array $data){
         return $this->client->post('/students', $data)->json();
     }
 

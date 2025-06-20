@@ -18,16 +18,18 @@ class CosumirApiWebController extends Controller
         return view('students.create');
     }
 
-    public function store(StudentApiService $service, Request $request)
+    public function store(Request $request, StudentApiService $service)
     {
+        // NO usar try-catch aquí, Laravel manejará los errores de validación por sí solo
         $validated = $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|email',
             'phone' => 'required|string',
-            'lenguage' => 'nullable|string'
+            'lenguage' => 'required|string'
         ]);
 
-        $service->crearEstudainte($validated);
+        // Si llega aquí, la validación pasó
+        $service->crearEstudiante($validated);
 
         return redirect()->route('estudiantes.index')->with('success', 'Estudiante creado exitosamente');
     }

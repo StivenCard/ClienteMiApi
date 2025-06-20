@@ -3,9 +3,11 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CosumirApiWebController;
 
-Route::get('/', function () {
+/* Route::get('/', function () {
     return redirect()->route('estudiantes.index');
-});
+}); */
+
+Route::get('/',[CosumirApiWebController::class,'index']);
 
 // web.php
 
